@@ -1,0 +1,35 @@
+# docker-compose.yml (NOVO - Para PostgreSQL e pgAdmin)
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine # Imagem oficial do PostgreSQL
+    container_name: postgres_catalogo_musicas
+    environment:
+      # Credenciais do SUPERUSER
+      POSTGRES_USER: user_app 
+      POSTGRES_PASSWORD: S1mpl3_Pass # Usaremos a mesma senha simples
+      POSTGRES_DB: catalogomusicas
+    ports:
+      - "5432:5432" # Porta padrão do PostgreSQL
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin_catalogo
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@example.com
+      PGADMIN_DEFAULT_PASSWORD: S1mpl3_Pass # Senha de login no pgAdmin
+    ports:
+      - "8080:80" # Acesse o pgAdmin pelo navegador em http://localhost:8080
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    restart: always
+    depends_on:
+      - db # Garante que o banco suba antes do pgAdmin
+
+volumes:
+  pg_data:
+  pgadmin_data:
