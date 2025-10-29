@@ -133,7 +133,7 @@ function menu() {
     console.log('3 - Consultar por Nome da Música');
     console.log('4 - Consultar por Banda/Artista');
     console.log('5 - Consultar por Produtora');
-    console.log('6 - ✨ Análise: Músicas por Produtora'); // NOVA OPÇÃO
+    console.log('6 -  Análise: Músicas por Produtora'); // NOVA OPÇÃO
     console.log('7 - Sair'); // Opção Sair mudou para 7
     rl.question('Escolha uma opção: ', function (opcao) {
         switch (opcao.trim()) {
@@ -159,7 +159,7 @@ function menu() {
                 finalizarPrograma();
                 break;
             default:
-                console.log('⚠️ Opção inválida! Por favor, escolha um número válido.');
+                console.log(' Opção inválida! Por favor, escolha um número válido.');
                 menu();
         }
     });
@@ -173,7 +173,7 @@ function cadastrarMusica() {
     rl.question('Nome da Música: ', function (nome) {
         // Verifica se já existe uma música com o mesmo nome (case-insensitive)
         if (musicas.some(function (m) { return m.nome.toLowerCase() === nome.toLowerCase(); })) {
-            console.log('⚠️ Música já cadastrada com esse nome. Tente um nome diferente.');
+            console.log(' Música já cadastrada com esse nome. Tente um nome diferente.');
             return menu();
         }
         rl.question('Banda/Artista: ', function (banda) {
@@ -252,7 +252,7 @@ function analisarProdutoras() {
         acc[produtora] = (acc[produtora] || 0) + 1;
         return acc;
     }, {}); // O Record<string, number> ajuda o TypeScript a entender o formato
-    console.log('\n--- 📊 Análise: Músicas por Produtora ---');
+    console.log('\n---  Análise: Músicas por Produtora ---');
     // Converte o objeto de contagem em um array para facilitar a exibição
     var produtorasOrdenadas = Object.entries(contagemProdutoras).sort(function (_a, _b) {
         var a = _a[1];

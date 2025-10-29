@@ -38,9 +38,9 @@ export async function initDB(): Promise<void> {
             table.string('banda', 255).notNullable();
             table.string('produtora', 255).notNullable();
         });
-        console.log(`\n✅ Tabela '${TABELA_MUSICAS}' criada no PostgreSQL.`);
+        console.log(`\n Tabela '${TABELA_MUSICAS}' criada no PostgreSQL.`);
     } else {
-        console.log(`\n✅ Conectado ao PostgreSQL. Tabela '${TABELA_MUSICAS}' encontrada.`);
+        console.log(`\n Conectado ao PostgreSQL. Tabela '${TABELA_MUSICAS}' encontrada.`);
     }
 }
 
@@ -103,5 +103,5 @@ export async function analisarProdutorasDB(): Promise<{ produtora: string; count
  */
 export function fecharDB(): void {
     db.destroy();
-    console.log('🔗 Conexão com o PostgreSQL fechada.');
+    console.log(' Conexão com o PostgreSQL fechada.');
 }

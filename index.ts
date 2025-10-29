@@ -186,7 +186,7 @@ function finalizarPrograma(): void {
       await initDB(); // Tenta inicializar a conexão e criar a tabela se necessário
       menu(); // Exibe o menu após a inicialização bem-sucedida do DB
   } catch (error) {
-      console.error('\n❌ ERRO FATAL NA CONEXÃO OU INICIALIZAÇÃO DO DB:', error);
+      console.error('\nERRO FATAL NA CONEXÃO OU INICIALIZAÇÃO DO DB:', error);
       console.log('\nVerifique se o container PostgreSQL Docker está rodando corretamente (docker ps).');
       fecharDB(); // Tenta fechar a conexão se houve erro na inicialização
       rl.close(); // Fecha a interface de leitura para sair do programa
